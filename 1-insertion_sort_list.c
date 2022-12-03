@@ -13,7 +13,7 @@ void insertion_sort_list(listint_t **list)
 	listint_t *nh, *ph, *buf;
 	int swapped = 0;
 
-	if (*list == NULL)
+	if (list == NULL)
 		return;
 	nh = *list;
 	while (nh->next != NULL)
