@@ -28,7 +28,7 @@ void insertion_sort_list(listint_t **list)
 			else
 				*list = buf;
 			buf->prev = nh->prev, nh->prev = buf;
-			buf->next = nh, print_list(*list), ph = nh->prev swapped++;
+			buf->next = nh, print_list(*list), ph = nh->prev, swapped++;
 			while (ph->prev != NULL)
 			{
 				if (ph->n >= ph->prev->n)
