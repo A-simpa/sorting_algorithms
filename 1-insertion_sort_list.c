@@ -10,28 +10,31 @@
 
 void insertion_sort_list(listint_t **list)
 {
-	int swapped = 0;
 	listint_t *nh, *ph, *buf;
+	int swapped = 0;
 
 	nh = *list;
 	while (nh->next != NULL)
 	{
 		if (nh->n > nh->next->n)
 		{
-			buf = nh->next;
-			nh->next = buf->next;
+			buf = nh->next, nh->next = buf->next;
 			if (buf->next != NULL)
 				buf->next->prev = nh;
-			nh->prev->next = buf, buf->prev = nh->prev;
-			nh->prev = buf, buf->next = nh;
-			print_list(*list), swapped++;
-			ph = nh->prev;
+			if (nh->prev != NULL)
+				nh->prev->next = buf;
+			else
+				*list = buf;
+			buf->prev = nh->prev, nh->prev = buf;
+			buf->next = nh, print_list(*list);
+			ph = nh->prev, swapped++;
 			while (ph->prev != NULL)
 			{
 				if (ph->n >= ph->prev->n)
 					break;
 				buf = ph->prev, buf->next = ph->next;
-				ph->next->prev = buf;
+				if (ph->next != NULL)
+					ph->next->prev = buf;
 				if (buf->prev != NULL)
 					buf->prev->next = ph;
 				else
@@ -42,6 +45,8 @@ void insertion_sort_list(listint_t **list)
 		}
 		else
 			nh = nh->next;
+		if (nh->next == NULL && swapped == 0)
+			return;
 	}
 
 }
