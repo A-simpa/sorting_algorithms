@@ -11,7 +11,7 @@
 
 void selection_sort(int *array, size_t size)
 {
-	int min, pos;
+	int min, pos = 0;
 	size_t n, i;
 
 	n = 0;
@@ -23,9 +23,12 @@ void selection_sort(int *array, size_t size)
 			if (array[i] < min)
 				min = array[i], pos = i;
 		}
-		array[pos] = array[n];
-		array[n] = min;
-		print_array(array, size);
+		if (pos != n)
+		{
+			array[pos] = array[n];
+			array[n] = min;
+			print_array(array, size);
+		}
 		n++;
 	}
 }
