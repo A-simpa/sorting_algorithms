@@ -15,11 +15,11 @@ unsigned long int get_gap(unsigned long int prev)
 	while (gap < prev)
 	{
 		pow = pow * 3;
-		if (pow > prev)
-			break;
 		gap = (pow - 1) / 2;
 
 	}
+	if (gap >= prev)
+		pow = pow / 3, gap = (pow - 1) / 2;
 	return (gap);
 }
 
