@@ -27,6 +27,9 @@ void insertion_sort_list(listint_t **list);
 void quick_sort(int *array, size_t size);
 int partition(int *array, size_t, int, int);
 void lomuto(int *array, size_t, int, int);
-
+unsigned long int get_gap(long unsigned int prev);
+void select_insertion_sort(int *array, size_t size, size_t gap);
+void recursed_shell_sort(int *array, long unsigned int prev, size_t size);
+void shell_sort(int *array, size_t size);
 
 #endif /* sort.h */
