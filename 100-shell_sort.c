@@ -15,7 +15,7 @@ unsigned long int get_gap(unsigned long int prev)
 	while (gap < prev)
 	{
 		pow = pow * 3;
-		if (pow > (prev * 2))
+		if (pow > prev)
 			break;
 		gap = (pow - 1) / 2;
 
@@ -102,6 +102,6 @@ void shell_sort(int *array, size_t size)
 {
 	if (array == NULL || size < 2)
 		return;
-	recursed_shell_sort(array, size / 2, size);
+	recursed_shell_sort(array, size, size);
 }
 
