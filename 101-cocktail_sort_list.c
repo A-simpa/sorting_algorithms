@@ -85,10 +85,11 @@ void backforward_bubble_sort(listint_t **list, unsigned long int swapped)
 
 void cocktail_sort_list(listint_t **list)
 {
-	unsigned long int n = list_len(*list);
+	unsigned long int n;
 
 	if (*list == NULL)
 		return;
+	n = list_len(*list);
 	while (n-- > 1)
 	{
 		backforward_bubble_sort(list, 0);
