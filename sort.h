@@ -32,6 +32,7 @@ void select_insertion_sort(int *array, size_t size, size_t gap);
 void recursed_shell_sort(int *array, unsigned long int prev, size_t size);
 void shell_sort(int *array, size_t size);
 unsigned long int list_len(listint_t *list);
+void backforward_bubble_sort(listint_t **list, unsigned long int swapped);
 void cocktail_sort_list(listint_t **list);
 
 #endif /* sort.h */

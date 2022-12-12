@@ -22,6 +22,60 @@ unsigned long int list_len(listint_t *list)
 
 
 /**
+ * backforward_bubble_sort - bubble sort in both direction
+ *
+ * @list: the list to sort
+ *
+ * @swapped: flag for if order already
+ *
+ * Return: void
+ */
+
+void backforward_bubble_sort(listint_t **list, unsigned long int swapped)
+{
+	listint_t *temp, *btemp, *buf;
+
+	temp = *list;
+	while (temp->next != NULL)
+	{
+		if (temp->n > temp->next->n)
+		{
+			buf = temp->next, temp->next = buf->next;
+			if (buf->next != NULL)
+				buf->next->prev = temp;
+			if (temp->prev != NULL)
+				temp->prev->next = buf;
+			else
+				*list = buf;
+			buf->prev = temp->prev, temp->prev = buf;
+			buf->next = temp, swapped++, print_list(*list);
+		}
+		else
+			temp = temp->next;
+	}
+	if (swapped == 0)
+		return;
+	btemp = temp;
+	while (btemp->prev != NULL)
+	{
+		if (btemp->n < btemp->prev->n)
+		{
+			buf = btemp->prev, buf->next = btemp->next;
+			if (btemp->next != NULL)
+				btemp->next->prev = buf;
+			if (buf->prev != NULL)
+				buf->prev->next = btemp;
+			else
+				*list = btemp;
+			btemp->prev = buf->prev, buf->prev = btemp;
+			btemp->next = buf, print_list(*list);
+		}
+		else
+			btemp = btemp->prev;
+	}
+}
+
+/**
  * cocktail_sort_list - sort an array using buble sort
  *
  * @list: the double link list to sort
@@ -31,49 +85,13 @@ unsigned long int list_len(listint_t *list)
 
 void cocktail_sort_list(listint_t **list)
 {
-	unsigned long int swapped, n = list_len(*list);
-	listint_t *temp, *btemp, *buf;
+	unsigned long int n = list_len(*list);
 
+	if (*list == NULL)
+		return;
 	while (n-- > 1)
 	{
-		temp = *list, swapped = 0;
-		while (temp->next != NULL)
-		{
-			if (temp->n > temp->next->n)
-			{
-				buf = temp->next, temp->next = buf->next;
-				if (buf->next != NULL)
-					buf->next->prev = temp;
-				if (temp->prev != NULL)
-					temp->prev->next = buf;
-				else
-					*list = buf;
-				buf->prev = temp->prev, temp->prev = buf;
-				buf->next = temp, swapped++, print_list(*list);
-			}
-			else
-				temp = temp->next;
-		}
-		if (swapped == 0)
-			return;
-		btemp = temp;
-		while (btemp->prev != NULL)
-		{
-			if (btemp->n < btemp->prev->n)
-			{
-				buf = btemp->prev, buf->next = btemp->next;
-				if (btemp->next != NULL)
-					btemp->next->prev = buf;
-				if (buf->prev != NULL)
-					buf->prev->next = btemp;
-				else
-					*list = btemp;
-				btemp->prev = buf->prev, buf->prev = btemp;
-				btemp->next = buf, print_list(*list);
-			}
-			else
-				btemp = btemp->prev;
-		}
+		backforward_bubble_sort(list, 0);
 	}
 }
 
