@@ -87,7 +87,7 @@ void cocktail_sort_list(listint_t **list)
 {
 	unsigned long int n;
 
-	if (*list == NULL)
+	if (list == NULL)
 		return;
 	n = list_len(*list);
 	while (n-- > 1)
