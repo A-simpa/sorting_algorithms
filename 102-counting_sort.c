@@ -108,7 +108,7 @@ void counting_sort(int *array, size_t size)
 		return;
 
 	max = max_val(array, size);
-	count = malloc(sizeof(int) * (max + 1))
+	count = malloc(sizeof(int) * (max + 1));
 	if (count == NULL)
 	{
 		free(count);
@@ -122,7 +122,7 @@ void counting_sort(int *array, size_t size)
 
 	cumm_sum(count, max + 1);
 
-	output = malloc(sizeof(int) * (size))
+	output = malloc(sizeof(int) * (size));
 	if (output == NULL)
 	{
 		free(output);
