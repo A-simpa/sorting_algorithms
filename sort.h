@@ -34,5 +34,10 @@ void shell_sort(int *array, size_t size);
 unsigned long int list_len(listint_t *list);
 void backforward_bubble_sort(listint_t **list, unsigned long int swapped);
 void cocktail_sort_list(listint_t **list);
+int max_val(int *array, size_t size);
+int count_occurence(int num, int *array, size_t size);
+int cumm_sum(int *array, size_t size);
+void init_output(int *input, int *count, int *output, size_t size);
+void counting_sort(int *array, size_t size);
 
 #endif /* sort.h */
