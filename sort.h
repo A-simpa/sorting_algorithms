@@ -39,5 +39,9 @@ int count_occurence(int num, int *array, size_t size);
 int cumm_sum(int *array, size_t size);
 void init_output(int *input, int *count, int *output, size_t size);
 void counting_sort(int *array, size_t size);
-
+void merge(int *, int, int, int, int *);
+void print_part(int *, int, int);
+void replicate(int *, int, int *);
+void divide_till_one_merge(int *, int, int, int *);
+void merge_sort(int *, size_t);
 #endif /* sort.h */
